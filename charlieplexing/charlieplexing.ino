@@ -1,11 +1,11 @@
 /* Charlieplexing Example: 3-6 Multiplexor
    See Circuit at http://pcbheaven.com/wikipages/Charlieplexing/
+   Open the serial monitor at 9600 baud and enter a number between 1-6 to turn on corrosponding LED
 */
           
-#define pin1 3
-#define pin2 5
-#define pin3 6
-
+#define pin_1 3
+#define pin_2 5
+#define pin_3 6
 
 void setup(){
 Serial.begin(9600);
@@ -43,13 +43,13 @@ if (Serial.available() > 0)
   delay(50);
 }
 
-void tristate(char p1, char p2, char p3) {
-  updatestate(pin1, p1);
-  updatestate(pin2, p2);
-  updatestate(pin3, p3);
+void tristate(char state_1, char state_2, char state_3) {
+  update_state(pin_1, state_1);
+  update_state(pin_2, state_2);
+  update_state(pin_3, state_3);
 }
 
-void updatestate(int pin, char state)  {
+void update_state(int pin, char state)  {
  if (state == 'H') {
    pinMode(pin, OUTPUT);
    digitalWrite(pin, HIGH);
